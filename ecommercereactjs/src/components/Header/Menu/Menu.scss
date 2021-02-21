@@ -1,0 +1,19 @@
+@import '../../../styles/_variables.scss';
+
+.menu {
+    display: flex;
+    align-items: center;
+    height: 100%;
+
+    &-menu-btn {
+        height: 55%;
+        width: 80px;
+        border-radius: 7px;
+        border: none;
+        outline: none;
+        box-shadow: 0 0 10px #48BFE3;
+        font-size: 1em;
+        font-weight: bold;
+        color: $header-menu-btn-color;
+    }
+}

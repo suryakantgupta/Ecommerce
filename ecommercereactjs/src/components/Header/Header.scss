@@ -27,4 +27,10 @@
         font-weight: 600;
         cursor: pointer;
     }
+
+    &-searchbox {
+        height: 80%;
+        display: flex;
+        justify-content: space-evenly;
+    }
 }

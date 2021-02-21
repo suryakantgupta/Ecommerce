@@ -2,6 +2,7 @@ import React from 'react'
 import {cn} from '@bem-react/classname'
 import './Header.scss'
 import SearchBox from '../SearchBox/SearchBox';
+import Menu from './Menu/Menu';
 
 function Header() {
 
@@ -42,8 +43,16 @@ Orders
                     </nav>
                 </span>
 
-                <span>
+                <span
+                    className={header('searchbox')}
+                >
+                    <div>
                     <SearchBox />
+                    </div>
+
+                    <div>
+                        <Menu />
+                    </div>
                 </span>
             </header>
     )
