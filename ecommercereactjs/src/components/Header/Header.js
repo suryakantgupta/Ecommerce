@@ -12,12 +12,12 @@ function Header() {
             <header
             className={header()}
             >
-                <span
+                <div
                     className={header('logo')}
                 >
                     SuryaStore
-                </span>
-                <span>
+                </div>
+                <div>
                     <nav>
                         <ul
                             className={header('navigation')}
@@ -41,9 +41,9 @@ Orders
                             </li>
                         </ul>
                     </nav>
-                </span>
+                </div>
 
-                <span
+                <div
                     className={header('searchbox')}
                 >
                     <div>
@@ -53,7 +53,7 @@ Orders
                     <div>
                         <Menu />
                     </div>
-                </span>
+                </div>
             </header>
     )
 }
