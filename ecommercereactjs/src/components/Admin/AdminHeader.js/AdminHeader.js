@@ -1,6 +1,7 @@
 import React from 'react'
 import {cn} from '@bem-react/classname'
 import './AdminHeader.scss'
+import { Link } from 'react-router-dom';
 
 function AdminHeader() {
 
@@ -29,7 +30,14 @@ Preview
                             <li
                             className={adminHeader('navLinks')}
                             >
+                                <Link
+                                    style={{
+                                        color:'inherit',
+                                        textDecoration:'none'
+                                    }}
+                                    to="/admin/add-product">
 Add-Products
+                                </Link>
                             </li>
 
                             <li

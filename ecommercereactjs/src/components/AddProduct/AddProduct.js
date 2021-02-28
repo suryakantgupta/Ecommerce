@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import {useDispatch} from 'react-redux'
 import './AddProduct.scss';
 import {cn} from '@bem-react/classname';
 import { Card } from 'react-bootstrap';
 import { Box } from '@material-ui/core'
 import useInput from '../../hooks/useInput';
+import { postAddProducts } from '../../redux';
 
 function AddProduct() {
 
@@ -14,6 +16,21 @@ function AddProduct() {
     const [productPrice,bindProductPrice]               = useInput('');
     const [productDescription,bindProductDescription]   = useInput('');
 
+    const dispatch = useDispatch()
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        const productData = {
+            title: productTitle,
+            imageUrl: productImageLink,
+            price: productPrice,
+            description: productDescription
+        };
+
+        dispatch(postAddProducts(productData));
+
+    }
+
     return (
         <div
             className={addProduct()}
@@ -23,12 +40,15 @@ function AddProduct() {
             width={0.4}
         >
             <Card>
+                <form
+                    onSubmit={handleSubmit}
+                >
                 <Card.Header className={addProduct("card-header")} >Add Product</Card.Header>
 
                 <Card.Body
                     className={addProduct('card-body')}
                 >
-                    <form
+                    <div
                         className={addProduct('add-product-form')}
                     >
 
@@ -73,13 +93,14 @@ function AddProduct() {
                             value={productDescription}
                             {...bindProductDescription}
                         />
-                    </form>
+                    </div>
                 </Card.Body>
                 <Card.Footer
                 className={addProduct('card-footer')}
                 >
                 <button className={addProduct('add-btn')} type="submit" >ADD</button>
                 </Card.Footer>
+                </form>
             </Card>
         </Box>
         </div>

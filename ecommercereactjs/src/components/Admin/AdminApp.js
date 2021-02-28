@@ -11,12 +11,9 @@ function AdminApp() {
     const getAdminPage = () => {
         switch (page.page) {
             case undefined:
-                console.log("undefined");
-                return (<AddProduct />)
                 break;
             case 'add-product':
-                console.log("add Product")
-                break;
+                return (<AddProduct />)
             case 'view-orders':
                 console.log("View Orders")
                 break;
