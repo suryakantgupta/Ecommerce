@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
-import {useDispatch} from 'react-redux'
+import React, { useEffect, useState } from 'react';
+import {useDispatch, useSelector} from 'react-redux'
 import './AddProduct.scss';
 import {cn} from '@bem-react/classname';
 import { Card } from 'react-bootstrap';
-import { Box } from '@material-ui/core'
+import { Box, Snackbar } from '@material-ui/core'
 import useInput from '../../hooks/useInput';
 import { postAddProducts } from '../../redux';
 
@@ -16,8 +16,17 @@ function AddProduct() {
     const [productPrice,bindProductPrice]               = useInput('');
     const [productDescription,bindProductDescription]   = useInput('');
 
-    const dispatch = useDispatch()
+    const [state, setState] = useState({open:false,message:''})
 
+    const dispatch = useDispatch()
+    const postProduct = useSelector(state => state.postProduct)
+
+    useEffect(() => {
+        if(!postProduct.loading) {
+            setState({open:true, message: postProduct.message})
+        }
+    }, [postProduct.loading])
+    
     const handleSubmit = (event) => {
         event.preventDefault();
         const productData = {
@@ -36,7 +45,7 @@ function AddProduct() {
             className={addProduct()}
         >
         <Box
-            boxShadow={1}
+            boxShadow={10}
             width={0.4}
         >
             <Card>
@@ -53,7 +62,7 @@ function AddProduct() {
                     >
 
 
-                        <label for="title">
+                        <label htmlFor="title">
                             Product Title
                         </label>
                         <input
@@ -64,7 +73,7 @@ function AddProduct() {
                         />
 
 
-                        <label for="imageLink">
+                        <label htmlFor="imageLink">
                             Product Image
                         </label>
                         <input
@@ -74,7 +83,7 @@ function AddProduct() {
                             {...bindProductImageLink}
                         />
 
-                        <label for="price">
+                        <label htmlFor="price">
                             Product Price
                         </label>
                         <input
@@ -84,7 +93,7 @@ function AddProduct() {
                             {...bindProductPrice}
                         />
 
-                        <label for="description">
+                        <label htmlFor="description">
                             Product Description
                         </label>
                         <input
@@ -103,6 +112,12 @@ function AddProduct() {
                 </form>
             </Card>
         </Box>
+
+        <Snackbar
+            open={state.open}
+            message={state.message}
+            onClose={()=>setState({...state, open:false})}
+        />
         </div>
     )
 }

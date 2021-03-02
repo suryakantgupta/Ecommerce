@@ -8,10 +8,34 @@ import axios from 'axios';
 
     export const postAddProducts = (data) => {
         return (dispatch) => {
-
+            dispatch(postAddProductsRequest())
             axios.post(`${baseUrl}/admin/add-product`,data)
             .then((result)=>{
-                console.log(result)
+                dispatch(postAddProductsSuccess(result.data))
+            })
+            .catch((err)=>{
+                dispatch(postAddProductsFailure(err))
             })
         }
     };
+
+    export const postAddProductsRequest = () => {
+        return {
+            type: POST_ADDPRODUCTS_REQUEST,
+        }
+    }
+
+    export const postAddProductsSuccess = (data) => {
+        return {
+            type: POST_ADDPRODUCTS_SUCCESS,
+            payload: data
+        }
+
+    }
+
+    export const postAddProductsFailure = (data) => {
+        return {
+            type: POST_ADDPRODUCTS_FAILURE,
+            payload: data
+        }
+    }
