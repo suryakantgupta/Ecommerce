@@ -1,0 +1,36 @@
+@import '../../styles/_variables.scss';
+
+.searchbox {
+    display: flex;
+    align-items: center;
+    height: 100%;
+
+    &-search-container {
+        height: 55%;
+        position: relative;
+    }
+
+    &-search-size {
+        height: 100%;
+        border-radius: 30px;
+        border: none;
+        padding-left: 15px;
+        padding-right: 40px;
+
+        &:focus {
+            border: none;
+            outline: none;
+        }
+    }
+
+    &-search-icon {
+        position: absolute;
+        cursor: pointer;
+        border-radius: 50%;
+        fill: $searchbox-fill-color;
+        box-shadow: 0 0 5px #48BFE3;
+        font-size: 2.1em;
+        right: 1px;
+        top: 1px
+    }
+}
