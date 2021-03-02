@@ -1,0 +1,9 @@
+@import '../../styles/_variables.scss';
+
+.preview {
+    margin: 2%;
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(300px,1fr));
+    justify-items: center;
+}

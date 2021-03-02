@@ -22,3 +22,10 @@ exports.postAddProduct = (req, res, next) => {
         })
 
 }
+
+exports.getProductById = (req, res, next) => {
+    Product.fetchById(parseInt(req.params.id))
+    .then((result) => {
+        res.send(result)
+    })
+}

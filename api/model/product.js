@@ -27,6 +27,7 @@ module.exports = class Product {
         return new Promise((resolve, reject) => {
             getProductFromFile()
                 .then((result) => {
+                    this.id = result.length+1;
                     result.push(this);
                     fs.writeFile(p, JSON.stringify(result), err => {
                         // console.error(err);
@@ -43,5 +44,14 @@ module.exports = class Product {
 
     static fetchAll() {
         return getProductFromFile();
+    }
+
+    static fetchById(id) {
+        return new Promise((resolve,reject) => {
+            getProductFromFile()
+            .then((result) => {
+                resolve(result.find((product) => product.id === id))
+            })
+        })
     }
 };

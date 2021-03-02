@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import AddProduct from '../AddProduct/AddProduct'
+import Preview from '../PreviewProducts/Preview'
 import './AdminApp.scss'
 import AdminHeader from './AdminHeader.js/AdminHeader'
 
@@ -11,7 +12,7 @@ function AdminApp() {
     const getAdminPage = () => {
         switch (page.page) {
             case undefined:
-                break;
+                return (<Preview />)
             case 'add-product':
                 return (<AddProduct />)
             case 'view-orders':

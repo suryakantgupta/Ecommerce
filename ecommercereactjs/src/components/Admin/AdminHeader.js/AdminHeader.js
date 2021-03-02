@@ -24,7 +24,15 @@ function AdminHeader() {
                             <li
                             className={adminHeader('navLinks')}
                             >
+                                <Link
+                                    style={{
+                                        color:'inherit',
+                                        textDecoration:'none'
+                                    }}
+                                    to="/admin">
 Preview
+                                </Link>
+
                             </li>
 
                             <li
